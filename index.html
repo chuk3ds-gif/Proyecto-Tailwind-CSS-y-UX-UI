@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevSpace Portfolio | Estudiante de Ingeniería de Software</title>
+  <meta name="description" content="Portafolio personal de un estudiante de Ingeniería de Software: perfil, habilidades, proyectos académicos y contacto.">
+  <meta name="theme-color" content="#0B1220">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+  <!-- Aplica el tema guardado antes de pintar la página (evita parpadeo) -->
+  <script>
+    try {
+      if (localStorage.getItem('tema') === 'claro') {
+        document.documentElement.classList.remove('dark');
+      }
+    } catch (e) { /* almacenamiento no disponible: se mantiene el modo oscuro */ }
+  </script>
+
+  <!-- Máximo dos fuentes de Google Fonts: Space Grotesk (títulos) e Inter (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS compilado con Tailwind CLI 4 (npm run build) -->
+  <link rel="stylesheet" href="dist/output.css">
+</head>
+
+<body class="bg-claro font-sans text-slate-800 antialiased dark:bg-fondo dark:text-slate-100">
+
+  <!-- Enlace para saltar al contenido (accesibilidad con teclado) -->
+  <a href="#contenido"
+     class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-lg focus:bg-acento focus:px-4 focus:py-2 focus:font-semibold focus:text-fondo">
+    Saltar al contenido
+  </a>
+
+  <!-- =============================== NAVBAR =============================== -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-superficie-claro/90 backdrop-blur dark:border-slate-700 dark:bg-superficie/90">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6" aria-label="Navegación principal">
+      <a href="#inicio"
+         class="rounded-md font-display text-xl font-bold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-acento-texto dark:focus-visible:outline-acento">
+        Dev<span class="text-acento-texto dark:text-acento">Space</span>
+      </a>
+
+      <!-- Enlaces de escritorio: ocultos en celular -->
+      <ul class="hidden items-center gap-1 md:flex">
+        <li><a href="#sobre-mi" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:text-acento-texto focus-visible:outline-2 focus-visible:outline-acento-texto dark:text-slate-300 dark:hover:text-acento dark:focus-visible:outline-acento">Sobre mí</a></li>
+        <li><a href="#habilidades" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:text-acento-texto focus-visible:outline-2 focus-visible:outline-acento-texto dark:text-slate-300 dark:hover:text-acento dark:focus-visible:outline-acento">Habilidades</a></li>
+        <li><a href="#proyectos" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:text-acento-texto focus-visible:outline-2 focus-visible:outline-acento-texto dark:text-slate-300 dark:hover:text-acento dark:focus-visible:outline-acento">Proyectos</a></li>
+        <li><a href="#faq" class="nav-link rounded-md px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:text-acento-texto focus-visible:outline-2 focus-visible:outline-acento-texto dark:text-slate-300 dark:hover:text-acento dark:focus-visible:outline-acento">Preguntas</a></li>
+        <li><a href="#contacto" class="ml-2 rounded-lg bg-acento px-4 py-2 text-sm font-semibold text-fondo transition-colors hover:bg-cyan-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto dark:focus-visible:outline-acento">Contacto</a></li>
+      </ul>
+
+      <div class="flex items-center gap-2">
+        <!-- Botón de modo claro / oscuro -->
+        <button id="btn-tema" type="button" aria-label="Activar modo claro"
+                class="grid size-10 place-items-center rounded-lg border border-slate-300 text-slate-700 transition-colors hover:border-acento-texto hover:text-acento-texto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto dark:border-slate-600 dark:text-slate-200 dark:hover:border-acento dark:hover:text-acento dark:focus-visible:outline-acento">
+          <!-- Sol: visible en modo oscuro -->
+          <svg class="hidden size-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <!-- Luna: visible en modo claro -->
+          <svg class="block size-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+
+        <!-- Botón hamburguesa: solo en celular -->
+        <button id="btn-menu" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-movil"
+                class="grid size-10 place-items-center rounded-lg border border-slate-300 text-slate-700 transition-colors hover:border-acento-texto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto md:hidden dark:border-slate-600 dark:text-slate-200 dark:hover:border-acento dark:focus-visible:outline-acento">
+          <svg id="icono-abrir" class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="icono-cerrar" class="hidden size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Menú móvil desplegable -->
+    <div id="menu-movil" class="hidden border-t border-slate-200 md:hidden dark:border-slate-700">
+      <ul class="flex flex-col gap-1 px-4 py-4">
+        <li><a href="#sobre-mi" class="block rounded-lg px-3 py-3 font-medium hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-acento-texto dark:hover:bg-slate-800 dark:focus-visible:outline-acento">Sobre mí</a></li>
+        <li><a href="#habilidades" class="block rounded-lg px-3 py-3 font-medium hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-acento-texto dark:hover:bg-slate-800 dark:focus-visible:outline-acento">Habilidades</a></li>
+        <li><a href="#proyectos" class="block rounded-lg px-3 py-3 font-medium hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-acento-texto dark:hover:bg-slate-800 dark:focus-visible:outline-acento">Proyectos</a></li>
+        <li><a href="#faq" class="block rounded-lg px-3 py-3 font-medium hover:bg-slate-100 focus-visible:outline-2 focus-visible:outline-acento-texto dark:hover:bg-slate-800 dark:focus-visible:outline-acento">Preguntas</a></li>
+        <li><a href="#contacto" class="mt-2 block rounded-lg bg-acento px-3 py-3 text-center font-semibold text-fondo focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto dark:focus-visible:outline-acento">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ================================ HERO ================================ -->
+    <section id="inicio" class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:grid-cols-2 md:py-24 lg:py-28">
+      <div class="text-center md:text-left">
+        <p class="mb-4 inline-block rounded-full border border-acento-texto/40 px-3 py-1 text-sm font-medium text-acento-texto dark:border-acento/40 dark:text-acento">
+          Estudiante de Ingeniería de Software
+        </p>
+        <!-- EDITABLE: reemplace "Tu Nombre" por su nombre real -->
+        <h1 class="font-display text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          Hola, soy <span class="text-acento-texto dark:text-acento">Tu Nombre</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-slate-600 md:mx-0 dark:text-slate-300">
+          Construyo interfaces web accesibles y pequeños videojuegos mientras aprendo buenas prácticas de ingeniería. Aquí reúno mis proyectos académicos y lo que estoy aprendiendo.
+        </p>
+        <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row md:justify-start">
+          <a href="#proyectos" class="rounded-lg bg-acento px-6 py-3 font-semibold text-fondo transition-colors hover:bg-cyan-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto active:scale-95 dark:focus-visible:outline-acento">
+            Ver proyectos
+          </a>
+          <a href="#contacto" class="rounded-lg border border-slate-300 px-6 py-3 font-semibold transition-colors hover:border-acento-texto hover:text-acento-texto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto dark:border-slate-600 dark:hover:border-acento dark:hover:text-acento dark:focus-visible:outline-acento">
+            Escríbeme
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <!-- EDITABLE: reemplace avatar.svg por una foto suya (y actualice el alt) -->
+        <img src="assets/images/avatar.svg" alt="Ilustración de avatar con el símbolo de código </> sobre fondo azul"
+             width="400" height="400"
+             class="w-56 rounded-full border-4 border-acento/60 sm:w-72 lg:w-80">
+      </div>
+    </section>
+
+    <!-- ============================== SOBRE MÍ ============================== -->
+    <section id="sobre-mi" class="border-y border-slate-200 bg-superficie-claro py-16 md:py-24 dark:border-slate-800 dark:bg-superficie">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <h2 class="font-display text-3xl font-bold sm:text-4xl">Sobre mí</h2>
+        <p class="mt-2 inline-flex items-center gap-2 rounded-md bg-advertencia/15 px-2 py-1 text-sm font-medium text-amber-800 dark:text-amber-300">
+          <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+          Contenido demostrativo: reemplácelo con su información real
+        </p>
+
+        <div class="mt-10 grid gap-10 lg:grid-cols-3">
+          <div class="space-y-4 leading-relaxed text-slate-700 lg:col-span-2 dark:text-slate-300">
+            <!-- EDITABLE: perfil académico -->
+            <p>Estudio Ingeniería de Software en <strong class="font-semibold text-slate-900 dark:text-white">[Nombre de la universidad]</strong> y actualmente curso el <strong class="font-semibold text-slate-900 dark:text-white">[semestre]</strong>. Me interesa el desarrollo frontend porque une la lógica de la programación con el diseño de experiencias.</p>
+            <p>En mis cursos he trabajado con algoritmos, bases de datos y desarrollo web. Fuera de clase dedico tiempo a crear videojuegos sencillos para practicar lógica, física básica y diseño de niveles.</p>
+            <p>Busco prácticas o proyectos colaborativos donde pueda seguir aprendiendo con equipos reales.</p>
+          </div>
+
+          <!-- Intereses tecnológicos -->
+          <aside class="rounded-2xl border border-slate-200 bg-claro p-6 dark:border-slate-700 dark:bg-fondo" aria-labelledby="titulo-intereses">
+            <h3 id="titulo-intereses" class="font-display text-xl font-semibold">Intereses</h3>
+            <ul class="mt-4 space-y-3 text-slate-700 dark:text-slate-300">
+              <li class="flex items-start gap-3"><span class="mt-2 size-2 shrink-0 rounded-full bg-acento" aria-hidden="true"></span>Desarrollo de videojuegos 2D</li>
+              <li class="flex items-start gap-3"><span class="mt-2 size-2 shrink-0 rounded-full bg-acento" aria-hidden="true"></span>Diseño de interfaces accesibles</li>
+              <li class="flex items-start gap-3"><span class="mt-2 size-2 shrink-0 rounded-full bg-acento" aria-hidden="true"></span>Inteligencia artificial aplicada al código</li>
+              <li class="flex items-start gap-3"><span class="mt-2 size-2 shrink-0 rounded-full bg-acento" aria-hidden="true"></span>Software libre</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ HABILIDADES ============================= -->
+    <section id="habilidades" class="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+      <h2 class="font-display text-3xl font-bold sm:text-4xl">Habilidades</h2>
+      <p class="mt-3 max-w-2xl text-slate-600 dark:text-slate-400">Tecnologías que uso en mis proyectos, agrupadas por área. El nivel es una autoevaluación.</p>
+
+      <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-2xl border border-slate-200 bg-superficie-claro p-6 dark:border-slate-700 dark:bg-superficie">
+          <h3 class="font-display text-xl font-semibold">Frontend</h3>
+          <ul class="mt-4 flex flex-wrap gap-2">
+            <li class="rounded-md bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">HTML5</li>
+            <li class="rounded-md bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">CSS</li>
+            <li class="rounded-md bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">Tailwind CSS</li>
+            <li class="rounded-md bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">JavaScript</li>
+          </ul>
+          <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">Nivel: intermedio</p>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-superficie-claro p-6 dark:border-slate-700 dark:bg-superficie">
+          <h3 class="font-display text-xl font-semibold">Backend y datos</h3>
+          <ul class="mt-4 flex flex-wrap gap-2">
+            <li class="rounded-md bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">Python</li>
+            <li class="rounded-md bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">Java</li>
+            <li class="rounded-md bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">SQL</li>
+            <li class="rounded-md bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">Node.js</li>
+          </ul>
+          <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">Nivel: básico-intermedio</p>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-superficie-claro p-6 sm:col-span-2 lg:col-span-1 dark:border-slate-700 dark:bg-superficie">
+          <h3 class="font-display text-xl font-semibold">Herramientas y videojuegos</h3>
+          <ul class="mt-4 flex flex-wrap gap-2">
+            <li class="rounded-md bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">Git y GitHub</li>
+            <li class="rounded-md bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">VS Code</li>
+            <li class="rounded-md bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">Godot</li>
+            <li class="rounded-md bg-slate-100 px-3 py-1 text-sm dark:bg-slate-800">Canvas API</li>
+          </ul>
+          <p class="mt-4 text-sm text-slate-600 dark:text-slate-400">Nivel: básico</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================= PROYECTOS ============================== -->
+    <section id="proyectos" class="border-y border-slate-200 bg-superficie-claro py-16 md:py-24 dark:border-slate-800 dark:bg-superficie">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6">
+        <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <h2 class="font-display text-3xl font-bold sm:text-4xl">Proyectos</h2>
+            <p class="mt-3 max-w-2xl text-slate-600 dark:text-slate-400">Proyectos de ejemplo. Reemplácelos por los suyos y enlace cada repositorio.</p>
+          </div>
+
+          <!-- Filtro de proyectos (componente extra) -->
+          <div class="flex flex-wrap gap-2" role="group" aria-label="Filtrar proyectos por categoría">
+            <button type="button" data-filtro="todos" aria-pressed="true"
+                    class="filtro rounded-full border border-slate-300 px-4 py-2 text-sm font-medium transition-colors hover:border-acento-texto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto aria-pressed:border-acento aria-pressed:bg-acento aria-pressed:text-fondo dark:border-slate-600 dark:hover:border-acento dark:focus-visible:outline-acento">Todos</button>
+            <button type="button" data-filtro="web" aria-pressed="false"
+                    class="filtro rounded-full border border-slate-300 px-4 py-2 text-sm font-medium transition-colors hover:border-acento-texto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto aria-pressed:border-acento aria-pressed:bg-acento aria-pressed:text-fondo dark:border-slate-600 dark:hover:border-acento dark:focus-visible:outline-acento">Web</button>
+            <button type="button" data-filtro="juegos" aria-pressed="false"
+                    class="filtro rounded-full border border-slate-300 px-4 py-2 text-sm font-medium transition-colors hover:border-acento-texto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto aria-pressed:border-acento aria-pressed:bg-acento aria-pressed:text-fondo dark:border-slate-600 dark:hover:border-acento dark:focus-visible:outline-acento">Videojuegos</button>
+          </div>
+        </div>
+
+        <!-- Grid de tarjetas: 1 columna en celular, 2 en tablet y portátil, 4 en escritorio ancho
+             (con 4 proyectos, 3 columnas dejaban una tarjeta sola en la última fila) -->
+        <div class="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+          <!-- TARJETA (cambio manual 1: rediseñar estas tarjetas) -->
+          <article data-categoria="web" class="proyecto group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-claro transition duration-300 hover:-translate-y-1 hover:border-acento-texto motion-reduce:transition-none motion-reduce:hover:translate-y-0 dark:border-slate-700 dark:bg-fondo dark:hover:border-acento">
+            <img src="assets/images/proyecto-tareas.svg" alt="Ventana de aplicación con una lista de tareas, dos de ellas marcadas como completadas" width="640" height="400" loading="lazy" class="aspect-[16/10] w-full object-cover">
+            <div class="flex flex-1 flex-col p-6">
+              <p class="text-sm font-medium text-acento-texto dark:text-acento">Web</p>
+              <h3 class="mt-1 font-display text-xl font-semibold">Gestor de tareas</h3>
+              <p class="mt-2 flex-1 text-slate-600 dark:text-slate-400">Aplicación para organizar pendientes con almacenamiento local y filtros por estado.</p>
+              <ul class="mt-4 flex flex-wrap gap-2 text-sm text-slate-600 dark:text-slate-400" aria-label="Tecnologías">
+                <li class="rounded bg-slate-200 px-2 py-0.5 dark:bg-slate-800">HTML</li>
+                <li class="rounded bg-slate-200 px-2 py-0.5 dark:bg-slate-800">Tailwind</li>
+                <li class="rounded bg-slate-200 px-2 py-0.5 dark:bg-slate-800">JavaScript</li>
+              </ul>
+              <a href="#" class="mt-6 inline-flex items-center gap-1 rounded font-semibold text-acento-texto hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto dark:text-acento dark:focus-visible:outline-acento">
+                Ver repositorio <span aria-hidden="true">→</span><span class="sr-only"> del gestor de tareas</span>
+              </a>
+            </div>
+          </article>
+
+          <article data-categoria="juegos" class="proyecto group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-claro transition duration-300 hover:-translate-y-1 hover:border-acento-texto motion-reduce:transition-none motion-reduce:hover:translate-y-0 dark:border-slate-700 dark:bg-fondo dark:hover:border-acento">
+            <img src="assets/images/proyecto-plataformas.svg" alt="Escena de un juego de plataformas con un personaje cian, monedas y un enemigo rojo" width="640" height="400" loading="lazy" class="aspect-[16/10] w-full object-cover">
+            <div class="flex flex-1 flex-col p-6">
+              <p class="text-sm font-medium text-acento-texto dark:text-acento">Videojuego</p>
+              <h3 class="mt-1 font-display text-xl font-semibold">Juego de plataformas 2D</h3>
+              <p class="mt-2 flex-1 text-slate-600 dark:text-slate-400">Prototipo con salto, recolección de monedas y un nivel diseñado a mano.</p>
+              <ul class="mt-4 flex flex-wrap gap-2 text-sm text-slate-600 dark:text-slate-400" aria-label="Tecnologías">
+                <li class="rounded bg-slate-200 px-2 py-0.5 dark:bg-slate-800">Godot</li>
+                <li class="rounded bg-slate-200 px-2 py-0.5 dark:bg-slate-800">GDScript</li>
+              </ul>
+              <a href="#" class="mt-6 inline-flex items-center gap-1 rounded font-semibold text-acento-texto hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto dark:text-acento dark:focus-visible:outline-acento">
+                Ver repositorio <span aria-hidden="true">→</span><span class="sr-only"> del juego de plataformas</span>
+              </a>
+            </div>
+          </article>
+
+          <article data-categoria="web" class="proyecto group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-claro transition duration-300 hover:-translate-y-1 hover:border-acento-texto motion-reduce:transition-none motion-reduce:hover:translate-y-0 dark:border-slate-700 dark:bg-fondo dark:hover:border-acento">
+            <img src="assets/images/proyecto-api.svg" alt="Lista de rutas de una API REST: GET, POST, PUT y DELETE para productos" width="640" height="400" loading="lazy" class="aspect-[16/10] w-full object-cover">
+            <div class="flex flex-1 flex-col p-6">
+              <p class="text-sm font-medium text-acento-texto dark:text-acento">Web</p>
+              <h3 class="mt-1 font-display text-xl font-semibold">API de inventario</h3>
+              <p class="mt-2 flex-1 text-slate-600 dark:text-slate-400">Servicio REST para registrar productos de una tienda, con validación de datos.</p>
+              <ul class="mt-4 flex flex-wrap gap-2 text-sm text-slate-600 dark:text-slate-400" aria-label="Tecnologías">
+                <li class="rounded bg-slate-200 px-2 py-0.5 dark:bg-slate-800">Node.js</li>
+                <li class="rounded bg-slate-200 px-2 py-0.5 dark:bg-slate-800">SQL</li>
+              </ul>
+              <a href="#" class="mt-6 inline-flex items-center gap-1 rounded font-semibold text-acento-texto hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto dark:text-acento dark:focus-visible:outline-acento">
+                Ver repositorio <span aria-hidden="true">→</span><span class="sr-only"> de la API de inventario</span>
+              </a>
+            </div>
+          </article>
+
+          <article data-categoria="juegos" class="proyecto group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-claro transition duration-300 hover:-translate-y-1 hover:border-acento-texto motion-reduce:transition-none motion-reduce:hover:translate-y-0 dark:border-slate-700 dark:bg-fondo dark:hover:border-acento">
+            <img src="assets/images/proyecto-pong.svg" alt="Partida de Pong con dos raquetas, una pelota y marcador 3 a 2" width="640" height="400" loading="lazy" class="aspect-[16/10] w-full object-cover">
+            <div class="flex flex-1 flex-col p-6">
+              <p class="text-sm font-medium text-acento-texto dark:text-acento">Videojuego</p>
+              <h3 class="mt-1 font-display text-xl font-semibold">Pong en el navegador</h3>
+              <p class="mt-2 flex-1 text-slate-600 dark:text-slate-400">Versión del clásico Pong con Canvas API, colisiones y marcador.</p>
+              <ul class="mt-4 flex flex-wrap gap-2 text-sm text-slate-600 dark:text-slate-400" aria-label="Tecnologías">
+                <li class="rounded bg-slate-200 px-2 py-0.5 dark:bg-slate-800">JavaScript</li>
+                <li class="rounded bg-slate-200 px-2 py-0.5 dark:bg-slate-800">Canvas</li>
+              </ul>
+              <a href="#" class="mt-6 inline-flex items-center gap-1 rounded font-semibold text-acento-texto hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto dark:text-acento dark:focus-visible:outline-acento">
+                Ver repositorio <span aria-hidden="true">→</span><span class="sr-only"> de Pong</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+        <p id="estado-filtro" class="sr-only" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ======================= PREGUNTAS FRECUENTES ======================== -->
+    <section id="faq" class="mx-auto max-w-3xl px-4 py-16 sm:px-6 md:py-24">
+      <h2 class="font-display text-3xl font-bold sm:text-4xl">Preguntas frecuentes</h2>
+
+      <div class="mt-10 divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-superficie-claro dark:divide-slate-700 dark:border-slate-700 dark:bg-superficie">
+        <div class="acordeon-item">
+          <h3>
+            <button type="button" id="faq-btn-1" aria-expanded="false" aria-controls="faq-panel-1"
+                    class="acordeon-btn flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-display text-lg font-semibold transition-colors hover:text-acento-texto focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-acento-texto dark:hover:text-acento dark:focus-visible:outline-acento">
+              ¿Estás buscando prácticas profesionales?
+              <svg class="size-5 shrink-0 transition-transform duration-300 motion-reduce:transition-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </h3>
+          <div id="faq-panel-1" role="region" aria-labelledby="faq-btn-1" hidden class="px-6 pb-5 leading-relaxed text-slate-600 dark:text-slate-300">
+            Sí. Me interesan prácticas en desarrollo frontend o en equipos que trabajen con videojuegos. Puedes escribirme desde el formulario de contacto.
+          </div>
+        </div>
+        <div class="acordeon-item">
+          <h3>
+            <button type="button" id="faq-btn-2" aria-expanded="false" aria-controls="faq-panel-2"
+                    class="acordeon-btn flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-display text-lg font-semibold transition-colors hover:text-acento-texto focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-acento-texto dark:hover:text-acento dark:focus-visible:outline-acento">
+              ¿Con qué tecnologías está hecho este sitio?
+              <svg class="size-5 shrink-0 transition-transform duration-300 motion-reduce:transition-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </h3>
+          <div id="faq-panel-2" role="region" aria-labelledby="faq-btn-2" hidden class="px-6 pb-5 leading-relaxed text-slate-600 dark:text-slate-300">
+            Con HTML5 semántico, Tailwind CSS 4 compilado con Tailwind CLI y JavaScript sin librerías. Se desarrolló con apoyo de inteligencia artificial y se revisó a mano.
+          </div>
+        </div>
+        <div class="acordeon-item">
+          <h3>
+            <button type="button" id="faq-btn-3" aria-expanded="false" aria-controls="faq-panel-3"
+                    class="acordeon-btn flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-display text-lg font-semibold transition-colors hover:text-acento-texto focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-acento-texto dark:hover:text-acento dark:focus-visible:outline-acento">
+              ¿Puedo ver el código de tus proyectos?
+              <svg class="size-5 shrink-0 transition-transform duration-300 motion-reduce:transition-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </h3>
+          <div id="faq-panel-3" role="region" aria-labelledby="faq-btn-3" hidden class="px-6 pb-5 leading-relaxed text-slate-600 dark:text-slate-300">
+            Sí. Cada tarjeta de la sección de proyectos enlaza a su repositorio público en GitHub.
+          </div>
+        </div>
+        <div class="acordeon-item">
+          <h3>
+            <button type="button" id="faq-btn-4" aria-expanded="false" aria-controls="faq-panel-4"
+                    class="acordeon-btn flex w-full items-center justify-between gap-4 px-6 py-5 text-left font-display text-lg font-semibold transition-colors hover:text-acento-texto focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-acento-texto dark:hover:text-acento dark:focus-visible:outline-acento">
+              ¿Qué tipo de videojuegos desarrollas?
+              <svg class="size-5 shrink-0 transition-transform duration-300 motion-reduce:transition-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </h3>
+          <div id="faq-panel-4" role="region" aria-labelledby="faq-btn-4" hidden class="px-6 pb-5 leading-relaxed text-slate-600 dark:text-slate-300">
+            Juegos 2D pequeños: plataformas y arcade. Los uso para practicar lógica, colisiones y diseño de niveles.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= CONTACTO ============================== -->
+    <section id="contacto" class="border-t border-slate-200 bg-superficie-claro py-16 md:py-24 dark:border-slate-800 dark:bg-superficie">
+      <div class="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-5">
+        <div class="lg:col-span-2">
+          <h2 class="font-display text-3xl font-bold sm:text-4xl">Contacto</h2>
+          <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">¿Tienes una propuesta de práctica, un proyecto o una pregunta? Déjame un mensaje.</p>
+          <p class="mt-6 rounded-lg border border-advertencia/50 bg-advertencia/10 p-4 text-sm text-amber-800 dark:text-amber-300">
+            Formulario de demostración: valida los datos en el navegador, pero no envía correos porque el sitio no tiene servidor.
+          </p>
+        </div>
+
+        <form id="form-contacto" novalidate class="space-y-6 rounded-2xl border border-slate-200 bg-claro p-6 sm:p-8 lg:col-span-3 dark:border-slate-700 dark:bg-fondo">
+          <p class="text-sm text-slate-600 dark:text-slate-400">Los campos marcados con <span class="text-red-700 dark:text-red-400" aria-hidden="true">*</span> son obligatorios.</p>
+
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div>
+              <label for="nombre" class="block text-sm font-medium">Nombre <span class="text-red-700 dark:text-red-400" aria-hidden="true">*</span></label>
+              <input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="error-nombre"
+                     class="campo mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-acento-texto focus:ring-2 focus:ring-acento/40 focus:outline-none aria-invalid:border-error dark:border-slate-600 dark:bg-superficie dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-acento">
+              <p id="error-nombre" class="mt-2 hidden text-sm text-red-700 dark:text-red-400"></p>
+            </div>
+            <div>
+              <label for="correo" class="block text-sm font-medium">Correo electrónico <span class="text-red-700 dark:text-red-400" aria-hidden="true">*</span></label>
+              <input id="correo" name="correo" type="email" autocomplete="email" required aria-describedby="error-correo" placeholder="nombre@ejemplo.com"
+                     class="campo mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 placeholder:text-slate-500 focus:border-acento-texto focus:ring-2 focus:ring-acento/40 focus:outline-none aria-invalid:border-error dark:border-slate-600 dark:bg-superficie dark:text-slate-100 dark:placeholder:text-slate-400 dark:focus:border-acento">
+              <p id="error-correo" class="mt-2 hidden text-sm text-red-700 dark:text-red-400"></p>
+            </div>
+          </div>
+
+          <div>
+            <label for="asunto" class="block text-sm font-medium">Asunto <span class="text-red-700 dark:text-red-400" aria-hidden="true">*</span></label>
+            <select id="asunto" name="asunto" required aria-describedby="error-asunto"
+                    class="campo mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:border-acento-texto focus:ring-2 focus:ring-acento/40 focus:outline-none aria-invalid:border-error dark:border-slate-600 dark:bg-superficie dark:text-slate-100 dark:focus:border-acento">
+              <option value="">Selecciona una opción</option>
+              <option value="practica">Oferta de práctica</option>
+              <option value="proyecto">Propuesta de proyecto</option>
+              <option value="pregunta">Pregunta general</option>
+            </select>
+            <p id="error-asunto" class="mt-2 hidden text-sm text-red-700 dark:text-red-400"></p>
+          </div>
+
+          <div>
+            <label for="mensaje" class="block text-sm font-medium">Mensaje <span class="text-red-700 dark:text-red-400" aria-hidden="true">*</span></label>
+            <textarea id="mensaje" name="mensaje" rows="5" required aria-describedby="ayuda-mensaje error-mensaje"
+                      class="campo mt-2 w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-slate-900 focus:border-acento-texto focus:ring-2 focus:ring-acento/40 focus:outline-none aria-invalid:border-error dark:border-slate-600 dark:bg-superficie dark:text-slate-100 dark:focus:border-acento"></textarea>
+            <p id="ayuda-mensaje" class="mt-2 text-sm text-slate-600 dark:text-slate-400">Mínimo 20 caracteres.</p>
+            <p id="error-mensaje" class="mt-2 hidden text-sm text-red-700 dark:text-red-400"></p>
+          </div>
+
+          <button type="submit"
+                  class="w-full rounded-lg bg-acento px-6 py-3 font-semibold text-fondo transition-colors hover:bg-cyan-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto dark:focus-visible:outline-acento">
+            Enviar mensaje
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- =============================== FOOTER =============================== -->
+  <footer class="border-t border-slate-200 bg-claro dark:border-slate-800 dark:bg-fondo">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 py-10 sm:px-6 md:flex-row">
+      <p class="text-sm text-slate-600 dark:text-slate-400">© <span id="anio">2026</span> Tu Nombre · DevSpace Portfolio</p>
+      <ul class="flex gap-4">
+        <!-- EDITABLE: reemplace "#" por sus enlaces reales -->
+        <li><a href="#" class="rounded text-sm font-medium text-slate-700 hover:text-acento-texto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto dark:text-slate-300 dark:hover:text-acento dark:focus-visible:outline-acento">GitHub</a></li>
+        <li><a href="#" class="rounded text-sm font-medium text-slate-700 hover:text-acento-texto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto dark:text-slate-300 dark:hover:text-acento dark:focus-visible:outline-acento">LinkedIn</a></li>
+        <li><a href="#inicio" class="rounded text-sm font-medium text-slate-700 hover:text-acento-texto focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-acento-texto dark:text-slate-300 dark:hover:text-acento dark:focus-visible:outline-acento">Volver arriba ↑</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Contenedor de notificaciones (toast) -->
+  <div id="toasts" class="pointer-events-none fixed right-4 bottom-4 left-4 z-50 flex flex-col items-center gap-3 sm:left-auto sm:items-end"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
