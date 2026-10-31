@@ -2,7 +2,7 @@
 
 Portafolio personal de un estudiante de Ingeniería de Software, desarrollado con **HTML5**, **Tailwind CSS 4** y **JavaScript puro**, con apoyo de inteligencia artificial y revisado a mano.
 
-- **Sitio publicado:** https://TU-USUARIO.github.io/DevX-Portfolio/ ← reemplace por su enlace
+- **Sitio publicado:** https://github.com/chuk3ds-gif/Proyecto-Tailwind-CSS-y-UX-UI 
 - **Video:** https://youtu.be/... ← reemplace por su enlace
 
 ![Vista del sitio en computador](documentacion/capturas/computador-oscuro.png)
